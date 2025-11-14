@@ -23,11 +23,11 @@ cargo test --release -- --test-threads=1 # single threaded to prevent simoultane
 
 To benchmark all RBE algorithms, use either
 ```bash
-cargo criterion RBE:
+cargo criterion RBE
 ```
 or
 ```bash
-cargo bench RBE:
+cargo bench RBE
 ```
 To benchmark just a single algorithm, we refer to `./benches/rbe.rs`.
 

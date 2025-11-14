@@ -12,3 +12,5 @@ Cargo.lock
 # ignore files generated while using flamegraph
 perf.*
 flamegraph.svg
+
+/registry_db/

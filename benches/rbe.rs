@@ -12,13 +12,13 @@ use small_rbe::{
 /// Benchmark [RBE::setup].
 ///
 /// This benchmark can be run with for example:
-/// - `cargo criterion RBE\ Setup`
-/// - `cargo bench --bench benchmarks RBE\ Setup`
-/// - `cargo flamegraph --bench benchmarks -- --bench RBE\ Setup`
+/// - `cargo criterion Single\ Setup`
+/// - `cargo bench --bench benchmarks Single\ Setup`
+/// - `cargo flamegraph --bench benchmarks -- --bench Single\ Setup`
 fn bench_setup(c: &mut Criterion) {
     let rbe = RBE::init(false);
 
-    c.bench_function("RBE Setup", |b| b.iter(|| rbe.setup()));
+    c.bench_function("Single Setup", |b| b.iter(|| rbe.setup()));
 
     drop_db();
 }
@@ -26,14 +26,14 @@ fn bench_setup(c: &mut Criterion) {
 /// Benchmark [RBE::keygen].
 ///
 /// This benchmark can be run with for example:
-/// - `cargo criterion RBE\ KeyGen`
-/// - `cargo bench --bench benchmarks RBE\ KeyGen`
-/// - `cargo flamegraph --bench benchmarks -- --bench RBE\ KeyGen`
+/// - `cargo criterion Single\ KeyGen`
+/// - `cargo bench --bench benchmarks Single\ KeyGen`
+/// - `cargo flamegraph --bench benchmarks -- --bench Single\ KeyGen`
 fn bench_keygen(c: &mut Criterion) {
     let rbe = RBE::init(false);
     let (pp, _st, mut _reg) = rbe.setup();
 
-    c.bench_function("RBE KeyGen", |b| b.iter(|| rbe.keygen(&pp)));
+    c.bench_function("Single KeyGen", |b| b.iter(|| rbe.keygen(&pp)));
 
     drop_db();
 }
@@ -41,15 +41,15 @@ fn bench_keygen(c: &mut Criterion) {
 /// Benchmark [RBE::update].
 ///
 /// This benchmark can be run with for example:
-/// - `cargo criterion RBE\ Update`
-/// - `cargo bench --bench benchmarks RBE\ Update`
-/// - `cargo flamegraph --bench benchmarks -- --bench RBE\ Update`
+/// - `cargo criterion Single\ Update`
+/// - `cargo bench --bench benchmarks Single\ Update`
+/// - `cargo flamegraph --bench benchmarks -- --bench Single\ Update`
 fn bench_update(c: &mut Criterion) {
     let rbe = RBE::init(false);
     let (pp, _st, mut reg) = rbe.setup();
     let (pk, _sk) = rbe.keygen(&pp);
 
-    c.bench_function("RBE Update", |b| {
+    c.bench_function("Single Update", |b| {
         b.iter(|| rbe.update(&mut reg, &pp, 0, &"0".repeat(162), &pk))
     });
 
@@ -59,9 +59,9 @@ fn bench_update(c: &mut Criterion) {
 /// Benchmark [RBE::enc] with a discrete Gaussian distribution as error distribution.
 ///
 /// This benchmark can be run with for example:
-/// - `cargo criterion RBE\ Enc`
-/// - `cargo bench --bench benchmarks RBE\ Enc`
-/// - `cargo flamegraph --bench benchmarks -- --bench RBE\ Enc`
+/// - `cargo criterion Single\ Enc`
+/// - `cargo bench --bench benchmarks Single\ Enc`
+/// - `cargo flamegraph --bench benchmarks -- --bench Single\ Enc`
 fn bench_enc(c: &mut Criterion) {
     let id = "0".repeat(162);
 
@@ -72,7 +72,7 @@ fn bench_enc(c: &mut Criterion) {
     let msg_dist = Uniform::new(0, 2).unwrap();
     let vec_m_t = Mat::sample_small(D, 1, B, &msg_dist, 0, Q, &mut rng());
 
-    c.bench_function("RBE Enc", |b| {
+    c.bench_function("Single Enc", |b| {
         b.iter(|| rbe.enc(&pp, &st, &id, vec_m_t.clone()))
     });
 
@@ -82,9 +82,9 @@ fn bench_enc(c: &mut Criterion) {
 /// Benchmark [RBE::enc_wo_randomness].
 ///
 /// This benchmark can be run with for example:
-/// - `cargo criterion RBE\ Enc\ without\ randomness`
-/// - `cargo bench --bench benchmarks RBE\ Enc\ without\ randomness`
-/// - `cargo flamegraph --bench benchmarks -- --bench RBE\ Enc\ without\ randomness`
+/// - `cargo criterion Single\ Enc\ without\ randomness`
+/// - `cargo bench --bench benchmarks Single\ Enc\ without\ randomness`
+/// - `cargo flamegraph --bench benchmarks -- --bench Single\ Enc\ without\ randomness`
 fn bench_enc_wo_randomness(c: &mut Criterion) {
     let id = "0".repeat(162);
     let l = id.len();
@@ -120,7 +120,7 @@ fn bench_enc_wo_randomness(c: &mut Criterion) {
 
     // let (vecs_r_j_t, vecs_e_j_t, vec_e_l_t, vec_e_tilde_t) = rbe.gen_enc_randomness(162, 1);
 
-    c.bench_function("RBE Enc without randomness", |b| {
+    c.bench_function("Single Enc without randomness", |b| {
         b.iter(|| {
             rbe.enc_wo_randomness(
                 &pp,
@@ -141,9 +141,9 @@ fn bench_enc_wo_randomness(c: &mut Criterion) {
 /// Benchmark [RBE::witness_gen].
 ///
 /// This benchmark can be run with for example:
-/// - `cargo criterion RBE\ Witness\ Gen`
-/// - `cargo bench --bench benchmarks RBE\ Witness\ Gen`
-/// - `cargo flamegraph --bench benchmarks -- --bench RBE\ Witness\ Gen`
+/// - `cargo criterion Single\ Witness\ Gen`
+/// - `cargo bench --bench benchmarks Single\ Witness\ Gen`
+/// - `cargo flamegraph --bench benchmarks -- --bench Single\ Witness\ Gen`
 fn bench_witness_gen(c: &mut Criterion) {
     let id = "0".repeat(162);
 
@@ -152,7 +152,7 @@ fn bench_witness_gen(c: &mut Criterion) {
     let (pk, _sk) = rbe.keygen(&pp);
     let _st = rbe.update(&mut reg, &pp, 0, &id, &pk);
 
-    c.bench_function("RBE Witness Gen", |b| {
+    c.bench_function("Single Witness Gen", |b| {
         b.iter(|| rbe.witness_gen(&reg, 0, &id))
     });
 
@@ -162,9 +162,9 @@ fn bench_witness_gen(c: &mut Criterion) {
 /// Benchmark [RBE::dec].
 ///
 /// This benchmark can be run with for example:
-/// - `cargo criterion RBE\ Dec`
-/// - `cargo bench --bench benchmarks RBE\ Dec`
-/// - `cargo flamegraph --bench benchmarks -- --bench RBE\ Dec`
+/// - `cargo criterion Single\ Dec`
+/// - `cargo bench --bench benchmarks Single\ Dec`
+/// - `cargo flamegraph --bench benchmarks -- --bench Single\ Dec`
 fn bench_dec(c: &mut Criterion) {
     let id = "0".repeat(162);
 
@@ -178,7 +178,7 @@ fn bench_dec(c: &mut Criterion) {
     let ct = rbe.enc(&pp, &st, &id, vec_m_t);
     let wit = rbe.witness_gen(&reg, 0, &id).unwrap();
 
-    c.bench_function("RBE Dec", |b| b.iter(|| rbe.dec(&sk, 0, &wit, &ct)));
+    c.bench_function("Single Dec", |b| b.iter(|| rbe.dec(&sk, 0, &wit, &ct)));
 
     drop_db();
 }
@@ -187,13 +187,13 @@ fn bench_all(c: &mut Criterion) {
     let rbe = RBE::init(false);
 
     // Benchmark setup
-    c.bench_function("RBE: Setup", |b| b.iter(|| rbe.setup()));
+    c.bench_function("RBE Setup", |b| b.iter(|| rbe.setup()));
 
     // Setup to continue with
     let (pp, _st, mut reg) = rbe.setup();
 
     // Benchmark keygen
-    c.bench_function("RBE: KeyGen", |b| b.iter(|| rbe.keygen(&pp)));
+    c.bench_function("RBE KeyGen", |b| b.iter(|| rbe.keygen(&pp)));
 
     // Generate (pk, sk)-pair that we reuse from now on
     let (pk, sk) = rbe.keygen(&pp);
@@ -201,7 +201,7 @@ fn bench_all(c: &mut Criterion) {
     let mut rng = rng();
 
     // Benchmark update
-    c.bench_function("RBE: Update", |b| {
+    c.bench_function("RBE Update", |b| {
         b.iter_batched(
             || {
                 // This setup phase is not timed in the benchmark.
@@ -216,6 +216,9 @@ fn bench_all(c: &mut Criterion) {
     });
 
     // Get current state
+    if ids.is_empty() {
+        return;
+    }
     let st = rbe.update(&mut reg, &pp, 0, &ids[0], &pk);
 
     // Generate small random message
@@ -223,7 +226,7 @@ fn bench_all(c: &mut Criterion) {
     let vec_m_t = Mat::sample_small(D, 1, B, &msg_dist, 0, Q, &mut rng);
 
     // Benchmark enc
-    c.bench_function("RBE: Enc", |b| {
+    c.bench_function("RBE Enc", |b| {
         b.iter_batched(
             || vec_m_t.clone(),
             |vec_m_t| rbe.enc(&pp, &st, &ids[0], vec_m_t),
@@ -235,7 +238,7 @@ fn bench_all(c: &mut Criterion) {
     let ct = rbe.enc(&pp, &st, &ids[0], vec_m_t);
 
     // Benchmark witness_gen
-    c.bench_function("RBE: Witness Gen", |b| {
+    c.bench_function("RBE Witness Gen", |b| {
         b.iter(|| rbe.witness_gen(&reg, 0, &ids[0]))
     });
 
@@ -243,7 +246,7 @@ fn bench_all(c: &mut Criterion) {
     let wit = rbe.witness_gen(&reg, 0, &ids[0]).unwrap();
 
     // Benchmark dec
-    c.bench_function("RBE: Dec", |b| b.iter(|| rbe.dec(&sk, 0, &wit, &ct)));
+    c.bench_function("RBE Dec", |b| b.iter(|| rbe.dec(&sk, 0, &wit, &ct)));
 
     // Clear registry database
     drop_db();
