@@ -216,9 +216,6 @@ fn bench_all(c: &mut Criterion) {
     });
 
     // Get current state
-    if ids.is_empty() {
-        return;
-    }
     let st = rbe.update(&mut reg, &pp, 0, &ids[0], &pk);
 
     // Generate small random message

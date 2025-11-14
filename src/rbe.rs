@@ -17,9 +17,9 @@ use std::{mem::MaybeUninit, vec};
 /// Degree of modulus-polynomial (X^d + 1) mod [`Q`]
 pub const D: usize = 256;
 /// Modulus applied to each coefficient
-pub const Q: u64 = 120_000_000_004_609;
+pub const Q: u64 = 281_474_976_694_273;
 /// Defines the matrix height of `A` and `B` among other vectors
-pub const N: usize = 8;
+pub const N: usize = 7;
 /// Matrix width of B
 pub const M_B: usize = N;
 
@@ -30,21 +30,21 @@ pub const K: usize = 3;
 /// Upper bound for the number of dictionaries in `reg`
 pub const B: usize = 30;
 /// Base of the pruned gadget matrix `G~`
-pub const GADGET_BASE: u64 = 49_325;
+pub const GADGET_BASE: u64 = 65_536;
 /// Number of entries each gadget vector is pruned by
 pub const PRUNE_GADGET_BY: usize = 1;
 /// Number of lower-order bits to remove from each coefficient of the ciphertext
-pub const PRUNE_CT_BY: usize = 19;
+pub const PRUNE_CT_BY: usize = 18;
 /// Number of lower-order bits to remove from each coefficient of the last vector of ciphertext
 /// This only takes effect if the [`RBE`] instance has `prune_aggressively` set to `true`.
 pub const PRUNE_LAST_CT_VECTOR_BY: usize = 43;
 
 /// The LWE-secrets `x` and `r` are sampled in U(R_{SMALL_RND_D})
-pub const SMALL_RND_B: u64 = 49_325; //should be odd to keep the distribution centered around 0
+pub const SMALL_RND_B: u64 = 65_535; //should be odd to keep the distribution centered around 0
 /// Gaussian parameter for most LWE-secrets and LWE-errors
 pub const SIGMA: f64 = 11.314;
 /// Gaussian parameter for LWE-error of χ¯
-pub const SIGMA_TILDE: f64 = 55_817_600_000.0;
+pub const SIGMA_TILDE: f64 = 48_592_000_000.0;
 
 /// Implements the Registration-Based-Encryption scheme.
 ///
