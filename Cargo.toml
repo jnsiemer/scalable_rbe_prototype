@@ -1,5 +1,5 @@
 [package]
-name = "small_rbe"
+name = "scalable_rbe"
 version = "0.1.0"
 edition = "2024"
 

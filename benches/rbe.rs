@@ -2,7 +2,7 @@
 
 use criterion::{Criterion, criterion_group};
 use rand::{Rng, distr::Uniform, rng};
-use small_rbe::{
+use scalable_rbe::{
     mat::Mat,
     ntt::MatNTT,
     rbe::{B, D, K, M_B, N, Q, RBE},
