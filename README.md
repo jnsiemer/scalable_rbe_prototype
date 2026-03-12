@@ -17,7 +17,7 @@ To build the library, run
 cargo build --release
 ```
 
-The documentation is available at [docs.rs]() or you can generate it yourself by executing
+The documentation is available at [docs.rs](https://docs.rs/scalable-rbe) or you can generate it yourself by executing
 ```bash
 cargo doc --open
 ```
