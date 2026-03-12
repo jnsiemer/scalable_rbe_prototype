@@ -7,6 +7,7 @@
 
 ## Dependencies
 - [`Rust`](https://rust-lang.org/) version >= 1.86.0 (optional: `nightly` toolchain to enable AVX-512 hardware acceleration if available by passing `--features=nightly` to `cargo bench`)
+- Installation of several standard libraries such as `cc`, which come out-of-the-box with several Linux distributions but can be installed using `sudo apt install build-essential` 
 
 To check the version and toolchain, use `rustc --version`. To update `rustup update`. To install the `nightly` toolchain, `rustup toolchain install nightly`.
 
@@ -20,19 +21,20 @@ The documentation is available at [docs.rs]() or you can generate it yourself by
 ```bash
 cargo doc --open
 ```
+If you're using WSL and your browser does not open, retry after installing `wslu`.
 
 To run all unit-tests, which also ensure correctness of the parameters and construction, execute the following line.
 ```bash
 cargo test --release -- --test-threads=1 # single threaded to prevent simoultaneous writes to the database from different tests
 ```
 
-To benchmark all RBE algorithms, use either
-```bash
-cargo criterion RBE
-```
-or
+To benchmark all RBE algorithms, you can use
 ```bash
 cargo bench RBE
+```
+If you have [`criterion`](https://crates.io/crates/criterion) installed, you can also execute
+```bash
+cargo criterion RBE
 ```
 To benchmark just a single algorithm, we refer to `./benches/rbe.rs`.
 

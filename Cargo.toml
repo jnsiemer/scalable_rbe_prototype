@@ -11,6 +11,12 @@ keywords = ["RBE", "prototype", "lattice", "cryptography"]
 categories = ["cryptography"]
 autobenches = false
 
+exclude = [
+    ".github/",
+    "estimator/",
+    "params/",
+]
+
 [dependencies]
 rand = "0.10"
 criterion = { version = "0.8", features = ["html_reports"] }
@@ -25,9 +31,3 @@ debug = true
 [[bench]]
 name = "benchmarks"
 harness = false
-
-exclude = [
-    ".github/",
-    "estimator/",
-    "params/",
-]
