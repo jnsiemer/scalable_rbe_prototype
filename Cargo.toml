@@ -4,11 +4,11 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-rand = "0.9.2"
-criterion = { version = "0.7", features = ["html_reports"] }
+rand = "0.10"
+criterion = { version = "0.8", features = ["html_reports"] }
 rayon = "1.11.0"
 concrete-ntt = "0.2.0"
-rand_distr = "0.5.1"
+rand_distr = "0.6"
 sled = "0.34.7"
 
 [profile.bench]

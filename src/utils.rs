@@ -136,7 +136,7 @@ pub fn unpack(bytes: &[u8], q: u64, len: usize) -> Vec<u64> {
 #[cfg(test)]
 mod test_compression {
     use crate::utils::{compress, decompress};
-    use rand::{Rng, rng};
+    use rand::{RngExt, rng};
 
     #[test]
     fn round_trip() {

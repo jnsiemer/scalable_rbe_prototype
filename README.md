@@ -1,7 +1,7 @@
 # Prototype of 'Scalable Registration-Based Encryption from Lattices'
 
 ## Dependencies
-- [`Rust`](https://rust-lang.org/) version >= 1.67.0 with the `nightly` toolchain (for AV512 hardware acceleration)
+- [`Rust`](https://rust-lang.org/) version >= 1.86.0 (optional: `nightly` toolchain to enable AV512 hardware acceleration by passing `--features=nightly` to `cargo bench`)
 
 To check the version and toolchain, use `rustc --version`. To update `rustup update`. To install the `nightly` toolchain, `rustup toolchain install nightly`.
 

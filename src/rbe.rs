@@ -15,7 +15,7 @@ use crate::{
     utils::{compress, decompress, pack, unpack},
 };
 use concrete_ntt::prime64::Plan;
-use rand::{RngCore, SeedableRng, rng, rngs::StdRng};
+use rand::{Rng, SeedableRng, rng, rngs::StdRng};
 use rand_distr::Uniform;
 use rayon::iter::{IntoParallelIterator, ParallelIterator};
 use sled::{Batch, Db, Tree};
@@ -70,7 +70,7 @@ pub const SIGMA_TILDE: f64 = 34_359_738_368.0;
 ///
 /// # Example
 /// ```
-/// use small_rbe::{rbe::{RBE, B, D, Q}, mat::Mat};
+/// use scalable_rbe::{rbe::{RBE, B, D, Q}, mat::Mat};
 /// use rand::rng;
 /// use rand_distr::Uniform;
 ///

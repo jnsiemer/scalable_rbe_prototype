@@ -9,7 +9,7 @@
 //! Contains benchmarks for the Registration-Based Encryption scheme.
 
 use criterion::{Criterion, criterion_group};
-use rand::{Rng, distr::Uniform, rng};
+use rand::{RngExt as _, distr::Uniform, rng};
 use scalable_rbe::{
     mat::Mat,
     ntt::MatNTT,
