@@ -25,3 +25,4 @@ sage -n jupyter
 ```
 if `sage` is available (if it's installed in a `conda` environment, then the appropriate environment needs to be activated).
 Inside the jupyter notebook, the cells need to be executed in order to ensure all functions are defined.
+The execution of `is_secure(rough=False)` may take up to 30 minutes to compute the concrete hardness of LWE.

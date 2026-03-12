@@ -42,7 +42,7 @@ pub const GADGET_BASE: u64 = 65_536;
 /// Number of entries each gadget vector is pruned by
 pub const PRUNE_GADGET_BY: usize = 1;
 /// Number of lower-order bits to remove from each coefficient of the ciphertext
-pub const PRUNE_CT_BY: usize = 15;
+pub const PRUNE_CT_BY: usize = 16;
 /// Number of lower-order bits to remove from each coefficient of the last vector of ciphertext
 /// This only takes effect if the [`RBE`] instance has `prune_aggressively` set to `true`.
 pub const PRUNE_LAST_CT_VECTOR_BY: usize = 43;
@@ -52,7 +52,7 @@ pub const SMALL_RND_B: u64 = 65_535; //should be odd to keep the distribution ce
 /// Gaussian parameter for most LWE-secrets and LWE-errors
 pub const SIGMA: f64 = 16.0;
 /// Gaussian parameter for LWE-error of χ¯
-pub const SIGMA_TILDE: f64 = 34_359_738_368.0;
+pub const SIGMA_TILDE: f64 = 33_519_950_000.0;
 
 /// Implements the Registration-Based-Encryption scheme.
 ///

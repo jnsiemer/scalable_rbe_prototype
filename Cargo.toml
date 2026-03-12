@@ -25,3 +25,9 @@ debug = true
 [[bench]]
 name = "benchmarks"
 harness = false
+
+exclude = [
+    ".github/",
+    "estimator/",
+    "params/",
+]
