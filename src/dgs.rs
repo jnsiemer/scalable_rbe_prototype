@@ -9,7 +9,9 @@
 //! Implementations of discrete Gaussian samplers.
 
 use rand::{
-    Rng, RngExt, distr::{Distribution, Uniform}, rngs::ThreadRng
+    Rng, RngExt,
+    distr::{Distribution, Uniform},
+    rngs::ThreadRng,
 };
 use std::f64::consts::{PI, SQRT_2};
 

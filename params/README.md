@@ -2,7 +2,8 @@
 
 ## Dependencies
 - [`sage-math`](https://www.sagemath.org/)
-- [`lattice-estimator`](https://github.com/malb/lattice-estimator) with commit `352ddaf` s.t. the folder structure looks like this.
+- [`lattice-estimator`](https://github.com/malb/lattice-estimator) (which we ran with commit `352ddaf`) s.t. the folder structure looks like this.
+  The lattice-estimator is a submodule of this repository and needs to be instantiated via `git submodule update --init` before running the script.
 
 Folder structure:
 - `benches`
@@ -22,5 +23,5 @@ This script runs in a jupyter notebook, which can be started with
 ```bash
 sage -n jupyter
 ```
-if `sage`'s environment is activated.
-How you activate your `sage` environment depends on your installation of `sage`.
+if `sage` is available (if it's installed in a `conda` environment, then the appropriate environment needs to be activated).
+Inside the jupyter notebook, the cells need to be executed in order to ensure all functions are defined.

@@ -29,22 +29,16 @@ pub fn compress(vector: &mut [u64], prune_by: usize, mod_q: u64) {
     if prune_by == 0 {
         return;
     }
+
+    let round_const = (1 << (prune_by - 1)) - 1;
+
     for v in vector {
         if *v > mod_q / 2 {
             *v = mod_q - *v;
-
-            *v >>= prune_by - 1;
-            if *v & 1 == 1 {
-                *v = (*v + 1) % (mod_q >> (prune_by - 1));
-            }
-            *v >>= 1;
+            *v = (*v + round_const) >> prune_by;
             *v = (mod_q >> prune_by) - *v;
         } else {
-            *v >>= prune_by - 1;
-            if *v & 1 == 1 {
-                *v = (*v + 1) % (mod_q >> (prune_by - 1));
-            }
-            *v >>= 1;
+            *v = (*v + round_const) >> prune_by;
         }
     }
 }
@@ -151,6 +145,7 @@ mod test_compression {
         decompress(&mut vector, prune_by, q);
 
         for i in 0..vector.len() {
+            println!("{}", cmp[i] as i64 - vector[i] as i64);
             assert!(cmp[i] as i64 - vector[i] as i64 >= -2i64.pow(prune_by as u32 - 1));
             assert!(cmp[i] as i64 - vector[i] as i64 <= 2i64.pow(prune_by as u32 - 1));
         }
