@@ -1,6 +1,7 @@
 # Prototype of 'Scalable Registration-Based Encryption from Lattices'
 [<img alt="github" src="https://img.shields.io/badge/github-github?style=for-the-badge&logo=github&color=8da0cb" height="20">](https://github.com/jnsiemer/scalable_rbe_prototype)
 [<img alt="crates.io" src="https://img.shields.io/badge/crates-cratesio?style=for-the-badge&logo=rust&color=fc8d62" height="20">](https://crates.io/crates/scalable-rbe)
+[<img alt="crates.io" src="https://img.shields.io/badge/zenodo-zenodo?style=for-the-badge&logo=zenodo&label=DOI&logoColor=000&color=ffd92f" height="20">](https://doi.org/10.5281/zenodo.18989489)
 [<img alt="docs.rs" src="https://img.shields.io/badge/docs-docs?style=for-the-badge&logo=docs.rs&color=66c2a5" height="20">](https://docs.rs/scalable-rbe)
 [<img alt="build" src="https://img.shields.io/github/actions/workflow/status/jnsiemer/scalable_rbe_prototype/pipeline.yml?style=for-the-badge" height="20">](https://github.com/jnsiemer/scalable_rbe_prototype/actions/workflows/pipeline.yml)
 [<img alt="license" src="https://img.shields.io/badge/License-MPL_2.0-blue.svg?style=for-the-badge" height="20">](LICENSE)
