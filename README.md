@@ -1,7 +1,12 @@
 # Prototype of 'Scalable Registration-Based Encryption from Lattices'
+[<img alt="github" src="https://img.shields.io/badge/github-github?style=for-the-badge&logo=github&color=8da0cb" height="20">](https://github.com/jnsiemer/scalable_rbe_prototype)
+[<img alt="crates.io" src="https://img.shields.io/badge/crates-cratesio?style=for-the-badge&logo=rust&color=fc8d62" height="20">](https://crates.io/crates/scalable-rbe)
+[<img alt="docs.rs" src="https://img.shields.io/badge/docs-docs?style=for-the-badge&logo=docs.rs&color=66c2a5" height="20">](https://docs.rs/scalable-rbe)
+[<img alt="build" src="https://img.shields.io/github/actions/workflow/status/jnsiemer/scalable_rbe_prototype/pipeline.yml?style=for-the-badge" height="20">](https://github.com/jnsiemer/scalable_rbe_prototype/actions/workflows/pipeline.yml)
+[<img alt="license" src="https://img.shields.io/badge/License-MPL_2.0-blue.svg?style=for-the-badge" height="20">](LICENSE)
 
 ## Dependencies
-- [`Rust`](https://rust-lang.org/) version >= 1.86.0 (optional: `nightly` toolchain to enable AV512 hardware acceleration by passing `--features=nightly` to `cargo bench`)
+- [`Rust`](https://rust-lang.org/) version >= 1.86.0 (optional: `nightly` toolchain to enable AVX-512 hardware acceleration if available by passing `--features=nightly` to `cargo bench`)
 
 To check the version and toolchain, use `rustc --version`. To update `rustup update`. To install the `nightly` toolchain, `rustup toolchain install nightly`.
 
@@ -11,7 +16,7 @@ To build the library, run
 cargo build --release
 ```
 
-To generate the documentation, execute
+The documentation is available at [docs.rs]() or you can generate it yourself by executing
 ```bash
 cargo doc --open
 ```
