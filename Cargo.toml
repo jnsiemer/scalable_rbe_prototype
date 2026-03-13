@@ -1,6 +1,6 @@
 [package]
 name = "scalable-rbe"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 rust-version = "1.86" # due to criterion dependency
 description = "A prototype of a scalable Registration-Based Encryption scheme based on standard lattice assumptions"

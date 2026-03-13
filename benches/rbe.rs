@@ -191,6 +191,11 @@ fn bench_dec(c: &mut Criterion) {
     drop_db();
 }
 
+/// Benchmark [RBE::setup], [RBE::keygen], [RBE::update], [RBE::enc], [RBE::witness_gen], and [RBE::dec].
+///
+/// This benchmark can be run with for example:
+/// - `cargo criterion RBE`
+/// - `cargo bench --bench benchmarks RBE`
 fn bench_all(c: &mut Criterion) {
     let rbe = RBE::init(false);
 
