@@ -1,7 +1,7 @@
 # Prototype of 'Scalable Registration-Based Encryption from Lattices'
 [<img alt="github" src="https://img.shields.io/badge/github-github?style=for-the-badge&logo=github&color=8da0cb" height="20">](https://github.com/jnsiemer/scalable_rbe_prototype)
 [<img alt="crates.io" src="https://img.shields.io/badge/crates-cratesio?style=for-the-badge&logo=rust&color=fc8d62" height="20">](https://crates.io/crates/scalable-rbe)
-[<img alt="crates.io" src="https://img.shields.io/badge/zenodo-zenodo?style=for-the-badge&logo=zenodo&label=DOI&logoColor=000&color=ffd92f" height="20">](https://doi.org/10.5281/zenodo.18989489)
+[<img alt="crates.io" src="https://img.shields.io/badge/zenodo-zenodo?style=for-the-badge&logo=zenodo&label=DOI&logoColor=000&color=ffd92f" height="20">](https://doi.org/10.5281/zenodo.19004915)
 [<img alt="docs.rs" src="https://img.shields.io/badge/docs-docs?style=for-the-badge&logo=docs.rs&color=66c2a5" height="20">](https://docs.rs/scalable-rbe)
 [<img alt="build" src="https://img.shields.io/github/actions/workflow/status/jnsiemer/scalable_rbe_prototype/pipeline.yml?style=for-the-badge" height="20">](https://github.com/jnsiemer/scalable_rbe_prototype/actions/workflows/pipeline.yml)
 [<img alt="license" src="https://img.shields.io/badge/License-MPL_2.0-blue.svg?style=for-the-badge" height="20">](LICENSE)
@@ -81,6 +81,9 @@ The benchmarks in the paper were conducted on an Intel Core Ultra 7 165U 4.9 GHz
 The number of threads impacts the execution time of encryption `Enc` significantly (as it is the only multi-threaded algorithm).
 Our experimental results show that disabling AVX2 instructions may slow down the execution time of some algorithms up to a factor of 2.
 We did not conduct any experiments with AVX-512 acceleration.
+
+#### Troubleshooting
+If a test or benchmark fails, please reset the registry by deleting the `registry_db` directory (if it exists and you are not running any tests or benchmarks). This directory holds the current state of the RBE's registry and is centralised across all executions. Some tests and benchmarks expect it to be empty upon start. Each test and benchmark wipes it after execution. Thus, problems mainly arise through manual interceptions or parallel execution.
 
 ---
 
