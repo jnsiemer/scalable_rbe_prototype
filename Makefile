@@ -24,6 +24,13 @@ install-rust:
 		curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y; \
 	else \
 		echo "Rust is already installed!"; \
+		CURRENT=$$(rustc --version | awk '{print $$2}'); \
+		if rustc --version | awk '{split($$2, v, "."); if (v[1] < 1 || (v[1] == 1 && v[2] < 86)) exit 1; exit 0 }'; then \
+			echo "Rust version $$CURRENT meets the requirement (>= 1.86)."; \
+		else \
+			echo "Current Rust version $$CURRENT is older than 1.86 (required). Updating..."; \
+			rustup update; \
+		fi \
 	fi
 
 
